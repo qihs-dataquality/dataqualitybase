@@ -20,8 +20,9 @@ build:
     - if: $RIG_R_VERSION == "devel"
 
 trigger_job:
-  forward:
-    pipeline_variables: true
   trigger:
     project: libreumg/internal/dataquier_builder
     branch: split-up
+    forward:
+      pipeline_variables: true
+
