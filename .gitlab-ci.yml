@@ -7,9 +7,11 @@ build:
     entrypoint: [""]
   timeout: 8h 00m
   script:
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "${CI_REGISTRY_IMAGE}:latest"
 
+trigger_job:
+  trigger:
+    project: libreumg/lib/dataqualitybase
