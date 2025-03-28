@@ -1,5 +1,6 @@
 variables:
   GODEBUG: "http2client=0"
+  RIG_R_VERSION: release #one of oldrel, next, release, devel
 build:
   stage: build
   image:
@@ -7,9 +8,22 @@ build:
     entrypoint: [""]
   timeout: 8h 00m
   script:
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
+      --build-arg RIG_R_VERSION=${RIG_R_VERSION}
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:latest"
+      --destination "${CI_REGISTRY_IMAGE}/${RIG_R_VERSION}:latest"
+  rules:
+    - if: $RIG_R_VERSION == "release"
+    - if: $RIG_R_VERSION == "oldrel"
+    - if: $RIG_R_VERSION == "next"
+    - if: $RIG_R_VERSION == "devel"
+
+trigger_job:
+  trigger:
+    project: libreumg/lib/dataqualitybase
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH  
+    - if: $RIG_R_VERSION == "release"
+
 
