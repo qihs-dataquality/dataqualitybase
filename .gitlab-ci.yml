@@ -25,5 +25,3 @@ trigger_job:
   trigger:
     project: libreumg/internal/dataquier_builder
     branch: split-up
-
-
