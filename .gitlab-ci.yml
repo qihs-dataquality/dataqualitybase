@@ -21,9 +21,6 @@ build:
 
 trigger_job:
   trigger:
-    project: libreumg/lib/dataqualitybase
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH  
-    - if: $RIG_R_VERSION == "release"
+    project: libreumg/internal/dataquier_builder
 
 
