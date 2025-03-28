@@ -14,4 +14,4 @@ build:
 
 trigger_job:
   trigger:
-    project: libreumg/lib/dataqualitybase
+    project: libreumg/internal/dataquier_builder
