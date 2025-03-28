@@ -23,6 +23,7 @@ trigger_job:
   variables:
     RIG_R_VERSION: $RIG_R_VERSION
   trigger:
+    include:
     - project: libreumg/internal/dataquier_builder
       ref: split-up
       file: '/.gitlab-ci.yml'
