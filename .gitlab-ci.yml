@@ -9,6 +9,7 @@ build:
   timeout: 8h 00m
   script:
     - /kaniko/executor
+      --cache=false
       --build-arg RIG_R_VERSION=${RIG_R_VERSION}
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
