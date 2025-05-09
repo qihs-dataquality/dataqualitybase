@@ -6,12 +6,13 @@ echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/90local-no-recomme
 apt-get update
 
 if [[ ! -d "/usr/local/texlive" ]]; then
-  apt-get install -y --no-install-recommends texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+  apt-get install -y --no-install-recommends texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra fonts-lmodern
 fi
 
 # https://pat-s.me/using-ccache-to-speed-up-r-package-checks-on-travis-ci/
 apt-get install -y --no-install-recommends ccache
-apt-get install -y --no-install-recommends libgit2-dev wget python-is-python3 qpdf libmagick++-dev libcurl4-openssl-dev libssl-dev
+apt-get install -y --no-install-recommends libdav1d5
+apt-get install -y --no-install-recommends libgit2-dev wget python-is-python3 qpdf libmagick++-dev libcurl4-openssl-dev libssl-dev autoconf libde265-0 libmagick++-6-headers libfftw3-double3
 apt-get install -y --no-install-recommends pandoc pandoc-citeproc cmake
 apt-get install -y --no-install-recommends tidy
 apt-get install -y --no-install-recommends openjdk-17-jdk-headless
