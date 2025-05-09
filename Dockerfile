@@ -6,10 +6,11 @@ RUN mkdir '/R_libs'
 RUN rig default ${RIG_R_VERSION}
 RUN mkdir '/R_libs/'$(rig default)
 
-COPY --chmod=700 c23-workaround.sh /root/c23-workaround.sh
-
-RUN chmod +x /root/c23-workaround.sh \
-    && /root/c23-workaround.sh ${RIG_R_VERSION}; #Runs only if version is next or devel
+# Not more needed, jpeg has been fixed :)
+# COPY --chmod=700 c23-workaround.sh /root/c23-workaround.sh
+#
+# RUN chmod +x /root/c23-workaround.sh \
+#     && /root/c23-workaround.sh ${RIG_R_VERSION}; #Runs only if version is next or devel
 
 RUN echo 'R_LIBS_SITE='$(Rscript --vanilla -e 'cat(c(file.path("", "R_libs", system("rig default", intern=TRUE)), .Library.site), sep = ":")') >> $(Rscript --vanilla -e 'cat(file.path(R.home(component = "home"), "etc", "Renviron"))')
 
