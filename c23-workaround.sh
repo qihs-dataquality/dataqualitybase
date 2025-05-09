@@ -1,6 +1,8 @@
 if [ "$1" = "next" -o "$1" = "devel" ] ; then
     echo "Applying C23 workaround"
-
+    
+    Rscript -e "install.packages('fs')"
+    
     apt update && apt install software-properties-common -yy 
     add-apt-repository ppa:ubuntu-toolchain-r/test -y
     apt update
