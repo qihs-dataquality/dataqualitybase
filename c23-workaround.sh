@@ -1,7 +1,7 @@
 if [ "$1" = "next" -o "$1" = "devel" ] ; then
     echo "Applying C23 workaround"
     
-    Rscript -e "install.packages('fs')"
+    Rscript -e "install.packages('fs')" # TODO: Should be vv: only for jpeg, the work-around should be temporarily activated
     
     apt update && apt install software-properties-common -yy 
     add-apt-repository ppa:ubuntu-toolchain-r/test -y
