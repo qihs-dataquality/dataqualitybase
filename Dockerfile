@@ -18,10 +18,10 @@ RUN bash /home/rstudio/deps.sh && rm /home/rstudio/deps.sh
 COPY settings.R /home/rstudio/settings.R
 
 COPY deps.R /home/rstudio/deps.R
-RUN Rscript /home/rstudio/deps.R  || [ "${RIG_R_VERSION}" = "devel" ] ; rm /home/rstudio/deps.R # becomes (|| true) if r version is devel, false otherwise
+RUN Rscript /home/rstudio/deps.R ; rm /home/rstudio/deps.R
 
 COPY pkg_deps.R /home/rstudio/pkg_deps.R
-RUN Rscript /home/rstudio/pkg_deps.R  || [ "${RIG_R_VERSION}" = "devel" ] ; rm /home/rstudio/pkg_deps.R
+RUN Rscript /home/rstudio/pkg_deps.R  ; rm /home/rstudio/pkg_deps.R
 
 RUN echo 'r = getOption("repos")' >> $(Rscript --vanilla -e 'cat(file.path(R.home(component = "home"), "etc", "Rprofile.site"))')
 RUN echo 'r["CRAN"] = "https://cloud.r-project.org/"' >> $(Rscript --vanilla -e 'cat(file.path(R.home(component = "home"), "etc", "Rprofile.site"))')
