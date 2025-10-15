@@ -11,6 +11,7 @@ fi
 
 # https://pat-s.me/using-ccache-to-speed-up-r-package-checks-on-travis-ci/
 apt-get install -y --no-install-recommends ccache
+apt-get install -y --no-install-recommends libicu66
 apt-get install -y --no-install-recommends libdav1d5
 apt-get install -y --no-install-recommends libgit2-dev wget python-is-python3 qpdf libmagick++-dev libcurl4-openssl-dev libssl-dev autoconf libde265-0 libmagick++-6-headers libfftw3-double3
 apt-get install -y --no-install-recommends pandoc cmake
