@@ -9,6 +9,7 @@ ips <- installed.packages()[, c("Package", "Version")]
 print(paste0(ips[, "Package"], ": ", ips[, "Version"]))
 
 install.packages("devtools")
+install.packages("remotes")
 install.packages("spelling")
 install.packages("rcmdcheck")
 install.packages("covr")
