@@ -6,5 +6,5 @@ withr::with_tempdir({
     destfile =
       "DESCRIPTION"
   )
-  devtools::install_dev_deps()
+  pak::local_install_dev_deps()
 })
