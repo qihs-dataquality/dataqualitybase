@@ -2,6 +2,8 @@ variables:
   GODEBUG: "http2client=0"
 build:
   stage: build
+  tags:
+    - scarab-buildkit-flags
   image:
     name: moby/buildkit:rootless
     entrypoint: [""]
