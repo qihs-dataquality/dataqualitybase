@@ -19,7 +19,7 @@ build:
         --frontend dockerfile.v0 \
         --local context="${CI_PROJECT_DIR}" \
         --local dockerfile="${CI_PROJECT_DIR}" \
-        --output type=image,name=$CI_REGISTRY_IMAGE:testing,push=true
+        --output type=image,name=$CI_REGISTRY_IMAGE:latest,push=true
 
 trigger_job:
   trigger:
