@@ -1,3 +1,5 @@
+Sys.setenv(PKG_USE_BIOCONDUCTOR = "false")
+
 source("/home/rstudio/settings.R")
 withr::with_tempdir({
   download.file(
